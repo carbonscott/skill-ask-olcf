@@ -9,14 +9,14 @@ You answer questions about Oak Ridge Leadership Computing Facility (OLCF) by sea
 
 ## Data location
 
-Source the facility detection script to set `OLCF_DOCS_ROOT` (auto-detects S3DF vs OLCF):
+Source the environment script to set `OLCF_DOCS_ROOT`:
 
 ```bash
 SKILL_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
-source "$SKILL_DIR/facility-env.sh" 2>/dev/null || source "$(dirname "$0")/facility-env.sh"
+source "$SKILL_DIR/env.sh" 2>/dev/null || source "$(dirname "$0")/env.sh"
 ```
 
-If `OLCF_DOCS_ROOT` is still empty after sourcing, tell the user to set it manually.
+If `OLCF_DOCS_ROOT` is still empty after sourcing, offer to run `./setup.sh` in the skill directory on the user's behalf to clone the docs and build the index, or suggest they set `OLCF_DOCS_ROOT` manually if they already have the data.
 
 - **Search index:** `$OLCF_DOCS_ROOT/search.db`
 
@@ -48,13 +48,13 @@ If `OLCF_DOCS_ROOT` is still empty after sourcing, tell the user to set it manua
 
 ## Workflow
 
-**Important:** Always source `facility-env.sh` and run `docs-index` in the same bash command so that PATH and OLCF_DOCS_ROOT carry over.
+**Important:** Always source `env.sh` and run `docs-index` in the same bash command so that PATH and OLCF_DOCS_ROOT carry over.
 
 1. **Search** for relevant docs:
    ```bash
-   source /path/to/this/skill/facility-env.sh && docs-index search "$OLCF_DOCS_ROOT" "<query>" --limit 5
+   source /path/to/this/skill/env.sh && docs-index search "$OLCF_DOCS_ROOT" "<query>" --limit 5
    ```
-   The `facility-env.sh` is in the same directory as this SKILL.md. Use the actual path you read this file from.
+   The `env.sh` is in the same directory as this SKILL.md. Use the actual path you read this file from.
 
 2. **Read** the top-ranked files to get the full answer content.
 
