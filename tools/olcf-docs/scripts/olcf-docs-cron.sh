@@ -35,7 +35,7 @@ run_sync() {
     docs-index index "$OLCF_DOCS_DATA_DIR" --incremental --ext rst
 
     # Fix permissions for shared access
-    chgrp -R ps-data "$OLCF_DOCS_DATA_DIR"
+    chgrp -R ps-users "$OLCF_DOCS_DATA_DIR"
     chmod -R g+rX "$OLCF_DOCS_DATA_DIR"
 }
 
