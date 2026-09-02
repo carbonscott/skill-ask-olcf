@@ -77,4 +77,4 @@ If `OLCF_DOCS_ROOT` is still empty after sourcing, offer to run `./setup.sh` in 
 - The docs are from the official `olcf/olcf-user-docs` repository (GitHub)
 - File format is reStructuredText (`.rst`), not Markdown
 - Some system guides are for decommissioned systems (Spock, Crusher) — note this in answers if relevant
-- To update the index after a `git pull`: `docs-index index "$OLCF_DOCS_ROOT" --incremental --ext rst`
+- To update the index after a `git pull`: `source /path/to/this/skill/env.sh && docs-index index "$OLCF_DOCS_ROOT" --incremental --ext rst`
